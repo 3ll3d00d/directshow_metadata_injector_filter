@@ -32,7 +32,7 @@ CUnknown* MetadataInjectorProperties::CreateInstance(LPUNKNOWN lpunk, HRESULT* p
 
 
 MetadataInjectorProperties::MetadataInjectorProperties(LPUNKNOWN pUnk, HRESULT* phr):
-    CBasePropertyPage(L"Metdata Injector Properties", pUnk, IDD_DIRECTSHOW_METADATA_INJECTOR_FILTER_PROP, IDS_TITLE),
+    CBasePropertyPage(L"Metadata Injector Properties", pUnk, IDD_DIRECTSHOW_METADATA_INJECTOR_FILTER_PROP, IDS_TITLE),
     mDMIFInterface(NULL),
     mIsInitialized(FALSE)
 {

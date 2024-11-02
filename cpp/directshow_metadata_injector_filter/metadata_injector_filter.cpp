@@ -52,7 +52,7 @@ const AMOVIESETUP_PIN sMIPPins[] =
 const AMOVIESETUP_FILTER sMIPSetup =
 {
     &CLSID_METADATA_INJECTOR_FILTER,  // Filter CLSID
-    L"Metdata Injector",              // String name
+    L"Metadata Injector",              // String name
     MERIT_DO_NOT_USE,                 // Filter merit
     2,                                // Number of pins
     sMIPPins                          // Pin information
@@ -157,7 +157,7 @@ HRESULT MetadataInjectorFilter::Transform(IMediaSample* pIn, IMediaSample* pOut)
 
 
 MetadataInjectorFilter::MetadataInjectorFilter(LPUNKNOWN punk, HRESULT* phr) :
-    CTransformFilter(L"Metdata Injector", punk, CLSID_METADATA_INJECTOR_FILTER),
+    CTransformFilter(L"Metadata Injector", punk, CLSID_METADATA_INJECTOR_FILTER),
     CPersistStream(punk, phr)
 {
     // Default path is right next to DLL
@@ -344,6 +344,9 @@ HRESULT MetadataInjectorFilter::CheckTransform(const CMediaType* mtIn, const CMe
 {
     CheckPointer(mtIn, E_POINTER);
     CheckPointer(mtOut, E_POINTER);
+    
+    if (mtOut->majortype != MEDIATYPE_Video)
+        return E_INVALIDARG;
 
     return NOERROR;
 }
